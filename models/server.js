@@ -6,6 +6,10 @@ class Server {
       this.port = process.env.PORT;
       this.app = express();
 
+      // * socket server
+      this.server = require("http").createServer(this.app);
+      this.io = require("socket.io")(this.server);
+
       // * paths
       this.paths = {};
 
@@ -35,7 +39,7 @@ class Server {
 
    // ? funtion that listen the app in the port
    listen() {
-      this.app.listen(this.port, () => {
+      this.server.listen(this.port, () => {
          console.log("server run in port ", this.port);
       });
    }
