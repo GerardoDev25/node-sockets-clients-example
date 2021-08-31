@@ -13,6 +13,10 @@ $offline.style.display = "none";
 
 const socket = io();
 
+socket.on("send-message", (payload) => {
+   console.log(payload);
+});
+
 socket.on("connect", () => {
    $online.style.display = "inline";
    $offline.style.display = "none";

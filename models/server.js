@@ -43,14 +43,12 @@ class Server {
    // ? function that config the Sockets
    sockets() {
       this.io.on("connection", (socket) => {
-         console.log("client connected", socket.id);
-
          socket.on("send-message", (payload) => {
-            console.log("mesage: ", payload);
+            this.io.emit("send-message", payload);
          });
 
          socket.on("disconnect", () => {
-            console.log("clente desconectado");
+            // console.log("clente desconectado");
          });
       });
    }
