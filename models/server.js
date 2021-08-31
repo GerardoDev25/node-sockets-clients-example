@@ -44,6 +44,11 @@ class Server {
    sockets() {
       this.io.on("connection", (socket) => {
          console.log("client connected", socket.id);
+
+         socket.on("send-message", (payload) => {
+            console.log("mesage: ", payload);
+         });
+
          socket.on("disconnect", () => {
             console.log("clente desconectado");
          });
