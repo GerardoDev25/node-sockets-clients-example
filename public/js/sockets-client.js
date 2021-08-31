@@ -35,6 +35,10 @@ $btnSend.addEventListener("click", () => {
       id: "1234",
       date: new Date().getDate(),
    };
-   socket.emit("send-message", payload);
+
    $txtMessage.value = "";
+
+   socket.emit("send-message", payload, (id) => {
+      console.log("desde el server: ", id);
+   });
 });

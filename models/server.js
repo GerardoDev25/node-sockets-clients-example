@@ -42,13 +42,19 @@ class Server {
 
    // ? function that config the Sockets
    sockets() {
+      // * listen when the client connect
       this.io.on("connection", (socket) => {
-         socket.on("send-message", (payload) => {
-            this.io.emit("send-message", payload);
-         });
 
-         socket.on("disconnect", () => {
-            // console.log("clente desconectado");
+         // * listen when the client disconnect
+         socket.on("disconnect", () => {});
+
+         // * when the client sned a message
+         socket.on("send-message", (payload, callback) => {
+            const id = 123456789;
+
+            callback({id});
+
+            // this.io.emit("send-message", payload);
          });
       });
    }
