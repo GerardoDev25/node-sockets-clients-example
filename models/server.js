@@ -1,6 +1,11 @@
 const cors = require("cors");
 const express = require("express");
 
+// * controllers
+const {
+   socketsControllers,
+} = require("../sockets/sockets.controllers");
+
 class Server {
    constructor() {
       this.port = process.env.PORT;
@@ -42,12 +47,8 @@ class Server {
 
    // ? function that config the Sockets
    sockets() {
-      this.io.on("connection", (socket) => {
-         console.log("client connected", socket.id);
-         socket.on("disconnect", () => {
-            console.log("clente desconectado");
-         });
-      });
+      // * listen when the client connect
+      this.io.on("connection", socketsControllers);
    }
 
    // ? funtion that listen the app in the port

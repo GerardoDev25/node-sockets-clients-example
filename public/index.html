@@ -17,10 +17,24 @@
    <body class="container">
       <h1 class="mt-2">Socket Clinet</h1>
       <hr />
-      <p> Sever Status: 
+      <p>
+         Sever Status:
          <span id="online" class="text-success">online</span>
          <span id="offline" class="text-danger">offline</span>
       </p>
+
+      <div class="row">
+         <div class="col">
+            <input
+               type="text"
+               id="txtMessage"
+               class="form-control"
+            />
+         </div>
+         <div class="col">
+            <input type="button" id="btnSend" class="btn btn-primary" value="Enviar"/>
+         </div>
+      </div>
 
       <script src="./socket.io/socket.io.js"></script>
       <script defer src="./js/sockets-client.js"></script>
