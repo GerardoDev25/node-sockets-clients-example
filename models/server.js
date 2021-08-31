@@ -18,6 +18,9 @@ class Server {
 
       // * routes
       this.routes();
+
+      // * Sockets config
+      this.sockets();
    }
 
    // ? function that contains all middlewares of the app
@@ -35,6 +38,16 @@ class Server {
       //    this.paths.uploads,
       //    require("../routes/upload.routes.js")
       // );
+   }
+
+   // ? function that config the Sockets
+   sockets() {
+      this.io.on("connection", (socket) => {
+         console.log("client connected", socket.id);
+         socket.on("disconnect", () => {
+            console.log("clente desconectado");
+         });
+      });
    }
 
    // ? funtion that listen the app in the port
